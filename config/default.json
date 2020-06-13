@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://rohit123:rohit123@devconnector-e3cew.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "avengersAssemble"
+  "jwtSecret": "avengersAssemble",
+  "githubClientId": "fe332f4785a865a641b1",
+  "githubSecret": "6baee2780dab0df1a4e4d9662f6ce11fe0e4b87f"
 }
