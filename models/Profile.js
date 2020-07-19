@@ -10,6 +10,9 @@ const ProfileSchema = new mongoose.Schema({
   website: {
     type: String,
   },
+  location: {
+    type: String,
+  },
   status: {
     type: String,
     required: true,

@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 const { check, validationResult } = require('express-validator');
 const config = require('config');
 const request = require('request');
@@ -76,7 +77,6 @@ router.post(
       instagram: instagram ? instagram : '',
     };
     profileFields.social = socialFields;
-
     try {
       let profile = await Profile.findOne({ user: req.user.id });
       if (profile) {
@@ -133,8 +133,9 @@ router.get('/user/:user_id', async (req, res) => {
 // @desc          delete profile, user and posts
 router.delete('/', auth, async (req, res) => {
   try {
+    //Remove the posts
+    await Post.deleteMany({ user: req.user.id });
     // Remove profile
-    // @todo remove users posts
     await Profile.findOneAndRemove({ user: req.user.id });
     // Remove the user
     await User.findOneAndRemove({ _id: req.user.id });
